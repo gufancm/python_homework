@@ -1,0 +1,33 @@
+def is_homomorphic(a):
+    """
+    检查数字a是否为同构数，即a的平方的低若干位与a相同。
+    """
+    b = a * a
+    # 转为字符串以便比较低位
+    str_a = str(a)
+    str_b = str(b)
+    # 比较a和b的低若干位
+    if str_b.endswith(str_a):
+        return True
+    return False
+
+
+def main():
+    # 读取输入，获取a和b
+    a, b = map(int, input().split())
+
+    # 存储所有同构数
+    homomorphic_numbers = []
+
+    # 遍历区间[a, b]，判断每个数是否为同构数
+    for i in range(a, b + 1):
+        if is_homomorphic(i):
+            homomorphic_numbers.append(i)
+
+    # 按从小到大的顺序输出所有同构数
+    for num in homomorphic_numbers:
+        print(num)
+
+
+if __name__ == "__main__":
+    main()
